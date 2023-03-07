@@ -17,6 +17,7 @@ install-dependencies:
 	go install github.com/envoyproxy/protoc-gen-validate@latest
 	go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
 	go install github.com/golang/mock/mockgen@latest
+	go install github.com/deepmap/oapi-codegen/cmd/oapi-codegen@latest
 ifeq ($(OS),Darwin)
 	brew install skaffold helm
 endif
@@ -81,8 +82,6 @@ test: ## Run unit tests
 help:
 	@awk -F ':|##' '/^[^\t].+?:.*?##/ {printf "\033[36m%-25s\033[0m %s\n", $$1, $$NF}' Makefile
 
-install-oapi:
-	go install github.com/deepmap/oapi-codegen/cmd/oapi-codegen@latest
 
 gen-server:
 	oapi-codegen -generate chi-server,types -package siren api/publicapi.openapi.json > api/gen/siren/api.gen.go        
