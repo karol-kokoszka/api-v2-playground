@@ -23,12 +23,13 @@ endif
 
 .PHONY: gen
 gen: ## Generate
-	@rm -Rf gen
+	@sudo rm -Rf gen
 	buf mod update
 	buf generate --path=proto/srv
 	buf generate --path=proto/srv --template=buf.gen.mock.yaml
 	buf generate --path=proto/restapi --template=buf.gen.openapiv2.yaml
 	docker run --rm -v "${PWD}:/local" openapitools/openapi-generator-cli generate -i /local/api/publicapi.openapi.json -g go-gin-server -o /local/gen/external --additional-properties=packageName=restapi,apiPath=restapi
+	docker run --rm -v "${PWD}:/local" openapitools/openapi-generator-cli generate -i /local/api/publicapi.openapi.json -g go -o /local/gen/sdk --additional-properties=generateInterfaces=true
 
 .PHONY: fmt
 fmt: ## Format source code
