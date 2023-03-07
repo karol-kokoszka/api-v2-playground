@@ -80,3 +80,9 @@ test: ## Run unit tests
 .PHONY: help
 help:
 	@awk -F ':|##' '/^[^\t].+?:.*?##/ {printf "\033[36m%-25s\033[0m %s\n", $$1, $$NF}' Makefile
+
+install-oapi:
+	go install github.com/deepmap/oapi-codegen/cmd/oapi-codegen@latest
+
+gen-server:
+	oapi-codegen -generate chi-server,types -package siren api/publicapi.openapi.json > api/gen/siren/api.gen.go        
