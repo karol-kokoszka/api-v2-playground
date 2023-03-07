@@ -1,0 +1,2881 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "ScyllaDB Cloud API - Beta",
+    "version": "0.0.6",
+    "description": "### Error codes mapping\n\t010101\tError retrieving default account\n\t010201\tError retrieving account info\n\t010301\tError retrieving countries\n\t010401\tInvalid request format\n\t010402\tcannot set Country from a different group\n\t010403\tError setting account country\n\t010501\tError getting account active credentials\n\t010601\tError sending cross account request\n\t010701\tError getting permissions\n\t020101\tInvalid request format\n\t020102\tError creating user\n\t020103\tEmail is already registered\n\t020104\tEmail domain not allowed\n\t020201\tInvalid request format\n\t020202\tError verifying\n\t020301\tInvalid request format\n\t020302\tGeneral error login\n\t020303\tUser must be active to login\n\t020304\tEmail or password is incorrect\n\t020304\tEmail or password is incorrect\n\t020305\tToo many failed login attempts\n\t020306\tThe password has expired\n\t020401\tInvalid request format\n\t020402\tGeneral logout error\n\t020501\tError retrieving user info\n\t020601\tInvalid request format\n\t020602\tGeneral password reset error\n\t020603\tEmail does not exist or invalid\n\t020604\tUser must be active to reset password\n\t020701\tInvalid request format\n\t020702\tGeneral password reset error\n\t020801\tInvalid request format\n\t020803\tPassword was already used\n\t020802\tGeneral reset password error\n\t020803\tPassword reset token is invalid or expired\n\t020901\tInvalid request format\n\t020902\tGeneral change password error\n\t020903\tCurrent password is incorrect\n\t020904\tNew password was already used\n\t020905\tNew password is incorrect\n\t021001\tInvalid request format\n\t021002\tError resending token\n\t021003\tUser already verified\n\t021101\tInvalid request format\n\t021102\tSession token is invalid or expired\n\t021201\tInvalid request format\n\t021202\tError updating user details\n\t021301\tInvalid request format\n\t021302\tError creating TOTP password\n\t021303\tInvalid user password\n\t021304\tUser already has MFA enabled\n\t021401\tInvalid request format\n\t021402\tError validating TOTP password\n\t021403\tUser already has MFA enabled\n\t021404\tInvalid TOTP UUID\n\t021405\tTOTP verification time expired\n\t021406\tInvalid user TOTP status\n\t021407\tInvalid user passcode\n\t021501\tInvalid request format\n\t021502\tGeneral error TOTP login\n\t021503\tUser should have MFA enabled\n\t021504\tInvalid session token\n\t021505\tInvalid session token status\n\t021506\tSession token expired\n\t021507\tInvalid user TOTP status\n\t021508\tInvalid user passcode\n\t021601\tInvalid request format\n\t021602\tDisable user TOTP general error\n\t021603\tInvalid user password\n\t021604\tUser should have MFA enabled\n\t021701\tInvalid request format\n\t021702\tValidate and disable user TOTP general error\n\t021703\tInvalid user password\n\t021704\tInvalid user TOTP status\n\t021705\tInvalid user passcode\n\t021801\tError creating monitor token\n\t021901\tInvalid request format\n\t021902\tError validating monitor token\n\t021903\tInvalid monitor token\n\t021904\tUser status is not Active\n\t021905\tUser ID mismatch\n\t030101\tInvalid request format\n\t030102\tError adding billing card\n\t030103\tForbidden\n\t030401\tError getting billing card info\n\t030402\tForbidden\n\t030201\tError retrieving billing info\n\t030202\tError adding account billing info\n\t030203\tForbidden\n\t030301\tError getting account billing info\n\t030302\tForbidden\n\t040101\tInvalid request format\n\t040102\tGeneral error with adding a new firewall rule\n\t040103\tFirewall rule already exist\n\t040104\tInvalid firewall rule\n\t040105\tCIDR range is too big, the prefix must be at least /16\n\t040201\tGeneral error with retrieving credentials\n\t040301\tGeneral error with retrieving the allowed firewall list\n\t040401\tGeneral error with retrieving the nodes list\n\t040501\tInvalid request format\n\t040502\tGeneral error with retrieving the cluster extended info\n\t040601\tGeneral error with retrieving the clusters list\n\t040701\tInvalid request format\n\t040704\tProvided CIDR range is too small\n\t040702\tGeneral error creating the cluster\n\t040703\tCluster name is already used\n\t040704\tCIDR range is too small\n\t040705\tCIDR does not belong to a private network\n\t040706\tCIDR range is too big\n\t040707\tAccount is not eligible for free-tier\n\t040708\tInvalid number of nodes for free tier cluster\n\t040709\tInstance type not eligible for free tier cluster\n\t040710\tInvalid billing status\n\t040711\tGiven service version requires AlternatorWriteIsolation\n\t040714\tCIDR range is too big, the prefix must be at least /16\n\t040712\tCluster name is invalid\n\t040713\tCIDR range overlaps a reserved network\n\t040715\tAccount cloud provider is not supported for jump start\n\t040716\tAccount is not active\n\t040717\tAccount is not eligible for jump start since billing is set\n\t040718\tAccount is not eligible for jump start since there is no active cloud account\n\t040719\tJump start is already used for this account\n\t040720\tJump start is time expired\n\t040801\tInvalid request format\n\t040802\t General error deleting the cluster\n\t040803\tCluster name is invalid\n\t040901\tGeneral error deleting the firewall allowed ip\n\t040902\tInvalid firewall rule id\n\t041001\tInvalid request format\n\t041002\tGeneral error resizing the cluster\n\t041003\tCluster DC must be active to resize the cluster\n\t040103\tFirewall rule already exist\n\t041107\tCluster has no VPC\n\t041108\tCluster has multiple VPC\n\t041103\tProvided VPC is already peered\n\t041102\tProvided CIDR block overlaps with target VPC\n\t041105\tProvided VPC ID is invalid\n\t041106\tProvided AccountID is invalid\n\t041109\tCIDR range overlaps a reserved network\n\t041101\tInvalid request format\n\t041111\tGeneral error creating VPC peering connection\n\t041110\tAccount or user is not authorized for the action\n\t041112\tInvalid firewall rule\n\t041113\tCIDR range is too big, the prefix must be at least /16\n\t041120\tGeneral error listing VPC peering connections\n\t041130\tGeneral error deleting VPC peering connection\n\t041140\tGeneral error describing VPC peering connection\n\t041150\tGeneral error getting cluster VPC list\n\t041160\tGeneral error requesting prometheus proxy\n\t041170\tGeneral error getting prometheus proxy tokens\n\t041171\tPrometheus proxy tokens not found\n\t041180\tGeneral error disabling prometheus proxy\n\t041181\tPrometheus Proxy tokens not found\n\t041190\tGeneral error getting cluster requests\n\t041191\tInvalid \"type\" query parameter\n\t041192\tInvalid \"type\" query parameter\n\t041200\tGeneral error with retrieving cluster publiccertificate\n\t041201\tEncryption must be enabled to retrieve cluster public certificate\n\t041210\tGeneral error getting backup task history\n\t041300\tInternal Server Error\n\t041301\tDNS support is already disabled on this cluster\n\t041302\tDNS support is already enabled on this cluster\n\t041303\tThere is an active request of the same type\n\t041400\tUnable to retrieve window information\n\t041401\tUnable to retrieve windows list\n\t041402\tBad request format, rrule is missing in body\n\t041403\tBad request format, invalid rrule format\n\t041404\tBad request format, duration needs to be >= 0\n\t041405\tProvided windows overlaps with other windows\n\t041406\twindow outside of working hours\n\t041407\tcan't delete more windows, minimum required reached\n\t041408\tcan't create more windows, max number reached\n\t041409\tUnable to create maintenance window\n\t041410\tUnable to update the maintenance window\n\t041411\tUnable to delete maintenance window\n\t0420001\tGeneral error getting datacenter list\n\t0420002\tGeneral error getting datacenter info\n\t0420003\tIll-formed datacenter ID\n\t0420004\tDatacenter not found\n\t0420005\tDatacenter does notbelong to cluster\n\t0420006\tDatacenter is not active 0420002 General error getting datacenter info\n\t0420007\tGeneral error requesting to add data center\n\t0420008\tProvided CIDR block overlaps with another data center\n\t0420009\tProvided CIDR block overlaps with VPC peer\n\t0420010\tCIDR range is too small\n\t0420011\tCIDR does not belong to a private network\n\t0420012\tCIDR does not belong to a private network\n\t0420013\tForbidden 0420014 CIDR range overlaps a reserved network\n\t0420015\tGeneral error creating datacenterrescale request\n\t0420016\tForbidden\n\t0420017\tCurrent and new sizes are the same\n\t0420018\tFree tier clusters cannot be rescaled\n\t0420019\tDevelopment clusters cannot be rescaled\n\t0420020\tNode count must be a multiplication of RF\n\t050101\tError running health checks\n\t060101\tGeneral error\n\t060102\tAgents need to use the ZenDesk portal\n\t070101\tError listing the cloud accounts\n\t070102\tForbidden\n\t070201\tError creating a new cloud account\n\t070202\tForbidden\n\t070203\tInvalid request format\n\t070204\tUnsupported CloudProviderID\n\t070301\tError deleting the cloud accounts\n\t070302\tForbidden\n\t070303\tThe cloud account is used by one or more cluster DC\n\t070401\tError updating thecloud account\n\t070402\tForbidden\n\t070403\tCloudRoleExternalID must match the existing value\n\t070404\tBoundaryPolicyARN field AccountID must match AWSAccountID\n\t070405\tCloudPolicyARN field AccountID must match AWSAccountID\n\t070406\tCloudRoleARN field AccountID must match AWSAccountID\n\t070407\tAWSAccountID must be a valid 12-digit account ID or be empty\n\t070408\tBoundaryPolicyARN must be a valid ARN or be empty\n\t070409\tBoundaryPolicyARN must be a policy\n\t070410\tCloudPolicyARN must be a valid ARN or be empty\n\t070411\tCloudPolicyARN must be a policy\n\t070412\tCloudRoleARN must be a valid ARN or be empty\n\t070413\tCloudRoleARN must be a role\n\t070414\tThe cloud account is used by one or more cluster DC\n\t070501\tError getting the AWS boundary IAM policy document\n\t070502\tForbidden\n\t070601\tError getting the AWS cloud IAM policy document\n\t070602\tForbidden\n\t070603\tInvalid request format\n\t070604\tCloud policy name must be between 1 and 64 characters, and use only word characters or symbols: +=,./@-\n\t070605\tUnsupported cloud provider\n\t070606\tThe boundary policy ARN is not set\n\t070607\tThe AWS account ID is not set\n\t070701\tError checking the cloud account policies\n\t070702\tForbidden\n\t070703\tThe cloud account properties are not complete\n\t070801\tError getting the cloud account clusters\n\t070802\tForbidden\n"
+  },
+  "servers": [
+    {
+      "url": "/"
+    }
+  ],
+  "security": [
+    {
+      "Authorization": []
+    }
+  ],
+  "paths": {
+    "/deployment/cloud-providers": {
+      "get": {
+        "operationId": "getCloudProviders",
+        "summary": "Get all cloud providers",
+        "description": "List all available cloud providers.",
+        "tags": ["Deployment"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "040101"
+                    },
+                    "data": {
+                      "properties": {
+                        "cloudProviders": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/cloudProvider"
+                          }
+                        }
+                      },
+                      "required": ["cloudProviders"]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/account/{accountId}/cloud-account": {
+      "get": {
+        "operationId": "getCloudAccount",
+        "description": "Returns list of active cloud-accounts for all cloud-providers from given account",
+        "summary": "Get the list of active cloud-accounts",
+        "tags": ["Account"],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Trace-Id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "description": "Account ID",
+            "name": "accountId",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/CloudAccount"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/account/{accountId}/cluster/{clusterId}/request": {
+      "get": {
+        "operationId": "getClusterRequests",
+        "description": "Return the list of cluster requests created in the context of a given account.",
+        "summary": "Get the list of cluster requests created in context of given account",
+        "tags": ["Cluster Request"],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Trace-Id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "description": "Account ID",
+            "name": "accountId",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "description": "Cluster ID",
+            "name": "clusterId",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "type of request",
+            "in": "query",
+            "name": "type",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "ADD_DC",
+                "CREATE_CLUSTER",
+                "DELETE_CLUSTER",
+                "RESIZE_CLUSTER",
+                "UPGRADE_CLUSTER",
+                "SCALE_CLUSTER",
+                "INSTALL_MANAGER",
+                "DNS",
+                "DELETE_VPC_PEERING"
+              ]
+            }
+          },
+          {
+            "description": "status of request",
+            "in": "query",
+            "name": "status",
+            "schema": {
+              "type": "string",
+              "enum": ["QUEUED", "IN_PROGRESS", "FAILED", "COMPLETED"]
+            }
+          }
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/ClusterRequest"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/account/{accountId}/cluster/request/{requestId}": {
+      "get": {
+        "operationId": "getClusterRequestById",
+        "description": "Return details about a particular cluster request.",
+        "summary": "Get the details about cluster request",
+        "tags": ["Cluster Request"],
+        "parameters": [
+          {
+            "in": "path",
+            "description": "Account ID",
+            "name": "accountId",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "header",
+            "name": "Trace-Id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "RequestId",
+            "in": "path",
+            "name": "requestId",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/ClusterRequest"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/account/{accountId}/clusters": {
+      "get": {
+        "operationId": "getClusters",
+        "summary": "Show user clusters list",
+        "description": "Get the list of all user clusters.",
+        "tags": ["Clusters"],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Trace-Id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "description": "Account ID",
+            "name": "accountId",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "description": "Enrich cluster with additional data (provider, region, instance)",
+            "name": "enriched",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "description": "Get cluster with metrics data - list of comma separated metrics to fetch",
+            "name": "metrics",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "CPU_LOAD",
+                "TOTAL_REQUESTS_RATE",
+                "STORAGE_FREE",
+                "STORAGE_USED",
+                "NODES_UP",
+                "NODES_DOWN"
+              ]
+            }
+          }
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "properties": {
+                        "clusters": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/ClusterWithMetrics"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/account/{accountId}/cluster/{clusterId}/delete": {
+      "post": {
+        "operationId": "deleteCluster",
+        "description": "Delete cluster (async)",
+        "summary": "Delete cluster (async)",
+        "tags": ["Cluster"],
+        "parameters": [
+          {
+            "in": "path",
+            "description": "Account ID",
+            "name": "accountId",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "description": "Cluster ID",
+            "name": "clusterId",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "header",
+            "name": "Trace-Id",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "name of the cluster",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "clusterName": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/ClusterWithMetrics"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/account/{accountId}/cluster": {
+      "post": {
+        "operationId": "createCluster",
+        "description": "Create a cluster-create request (async).",
+        "summary": "Create cluster-create request (async)",
+        "tags": ["Cluster"],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Trace-Id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "description": "Account ID",
+            "name": "accountId",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "cluster-create request body",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClusterCreateRequestV1"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "properties": {
+                        "requestId": {
+                          "type": "string"
+                        },
+                        "fields": {
+                          "$ref": "#/components/schemas/ClusterCreateResponse"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/account/{accountId}/cluster/{clusterId}": {
+      "get": {
+        "operationId": "getClusterDetails",
+        "summary": "Get cluster details",
+        "description": "Get full details of a specific cluster.",
+        "tags": ["Clusters"],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Trace-Id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "description": "Account ID",
+            "name": "accountId",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "description": "Cluster ID",
+            "name": "clusterId",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "description": "Enrich cluster with additional data",
+            "name": "enriched",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "properties": {
+                        "cluster": {
+                          "$ref": "#/components/schemas/ClusterDetailedInfo"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/account/{accountId}/cluster/{clusterId}/nodes": {
+      "get": {
+        "operationId": "getClusterNodes",
+        "summary": "Get cluster nodes",
+        "description": "Get the list of cluster nodes.",
+        "tags": ["Clusters"],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Trace-Id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "description": "Account ID",
+            "name": "accountId",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "description": "Cluster ID",
+            "name": "clusterId",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "description": "Enrich nodes with additional data",
+            "name": "enriched",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "properties": {
+                        "nodes": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/NodeInfo"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/account/{accountId}/cluster/{clusterId}/dcs": {
+      "get": {
+        "operationId": "getClusterDCs",
+        "summary": "Get cluster data centers",
+        "description": "Get the list of data centers used by a cluster.",
+        "tags": ["Clusters"],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Trace-Id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "description": "Account ID",
+            "name": "accountId",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "description": "Cluster ID",
+            "name": "clusterId",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "description": "Enrich DCs with additional data",
+            "name": "enriched",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "properties": {
+                        "dataCenters": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/ClusterDCInfoEnriched"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/account/{accountId}/cluster/{clusterId}/network/firewall/allowed": {
+      "post": {
+        "operationId": "createFirewallAllowedRule",
+        "summary": "Create a new firewall allowed rule",
+        "description": "Create a new firewall allowed rule.",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Trace-Id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "description": "Account ID",
+            "name": "accountId",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "description": "Cluster ID",
+            "name": "clusterId",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "ipAddress and CIDR block",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "ipAddress": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/FirewallRules"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "tags": ["Account Cluster Network"]
+      },
+      "get": {
+        "operationId": "getFirewallAllowedRules",
+        "summary": "Get the cluster firewall rules",
+        "description": "List the cluster firewall rules.",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Trace-Id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "description": "Account ID",
+            "name": "accountId",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "description": "Cluster ID",
+            "name": "clusterId",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/FirewallRules"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "tags": ["Account Cluster Network"]
+      }
+    },
+    "/account/{accountId}/cluster/{clusterId}/network/firewall/allowed/{ruleId}": {
+      "delete": {
+        "operationId": "deleteFirewallAllowedRule",
+        "summary": "Delete the firewall rule of given id",
+        "description": "Delete the firewall rule of a given id.",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Trace-Id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "description": "Account ID",
+            "name": "accountId",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "description": "Cluster ID",
+            "name": "clusterId",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Rule ID",
+            "in": "path",
+            "name": "ruleId",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/FirewallRules"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "tags": ["Account Cluster Network"]
+      }
+    },
+    "/account/{accountId}/cluster/{clusterId}/network/vpc/peer": {
+      "get": {
+        "operationId": "getVPCPeeringList",
+        "summary": "Get the details of all cluster VPC peers",
+        "description": "List the details of all cluster VPC peers.",
+        "tags": ["Account Cluster Network"],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Trace-Id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "description": "Account ID",
+            "name": "accountId",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "description": "Cluster ID",
+            "name": "clusterId",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/ClusterVPCPeeringInfo"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "operationId": "createVPCPeering",
+        "summary": "Create VPC peering according to given request payload",
+        "description": "Create VPC peering according to a given request payload.",
+        "tags": ["Account Cluster Network"],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Trace-Id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "description": "Account ID",
+            "name": "accountId",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "description": "Cluster ID",
+            "name": "clusterId",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Peering details",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "cidrBlock": {
+                    "type": "string",
+                    "description": "Single address or list of comma separated CIDR block addresses,",
+                    "example": "10.10.0.0/16"
+                  },
+                  "dcId": {
+                    "type": "integer"
+                  },
+                  "vpcId": {
+                    "type": "string"
+                  },
+                  "ownerId": {
+                    "type": "string"
+                  },
+                  "regionId": {
+                    "type": "integer"
+                  },
+                  "allowCql": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "externalId": {
+                          "type": "string"
+                        },
+                        "id": {
+                          "type": "integer"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/account/{accountId}/cluster/{clusterId}/network/vpc/peer/{peerId}": {
+      "get": {
+        "operationId": "getVPCPeeringInfo",
+        "summary": "Get the details of VPC peer",
+        "description": "List the details of cluster VPC peer.",
+        "tags": ["Account Cluster Network"],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Trace-Id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "description": "Account ID",
+            "name": "accountId",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "description": "Cluster ID",
+            "name": "clusterId",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "description": "Peer ID",
+            "name": "peerId",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/ClusterVPCPeeringInfo"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteVPCPeering",
+        "summary": "Schedule delete VPC peering request (async)",
+        "description": "Schedule delete VPC peering request (async). Returns a cluster request",
+        "tags": ["Account Cluster Network"],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Trace-Id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "description": "Account ID",
+            "name": "accountId",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "description": "Cluster ID",
+            "name": "clusterId",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "description": "Peer ID",
+            "name": "peerId",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/ClusterRequest"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/deployment/scylla-versions": {
+      "get": {
+        "operationId": "getScyllaVersions",
+        "summary": "Get all scylla cloud versions",
+        "description": "List all available ScyllaDB Cloud service versions.",
+        "tags": ["Deployment"],
+        "parameters": [
+          {
+            "in": "query",
+            "description": "Should include default values",
+            "name": "defaults",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "040101"
+                    },
+                    "data": {
+                      "properties": {
+                        "defaultScyllaVersionId": {
+                          "type": "integer",
+                          "example": 91
+                        },
+                        "scyllaVersions": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/scyllaVersion"
+                          }
+                        }
+                      },
+                      "required": ["scyllaVersions"]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/deployment/cloud-provider/{cloudProviderId}/regions": {
+      "get": {
+        "operationId": "getCloudProviderRegions",
+        "summary": "Get all regions for the cloud provider",
+        "description": "Show the regions for the specified cloud provider.",
+        "tags": ["Deployment"],
+        "parameters": [
+          {
+            "in": "path",
+            "description": "Cloud Provider ID (full list [get] /deployment/provider)",
+            "name": "cloudProviderId",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "example": 1
+            }
+          },
+          {
+            "in": "query",
+            "description": "Should include default values",
+            "name": "defaults",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/errorObject"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "properties": {
+                            "regions": {
+                              "type": "array",
+                              "items": {
+                                "$ref": "#/components/schemas/region"
+                              }
+                            },
+                            "defaultRegionId": {
+                              "type": "integer",
+                              "example": 30
+                            },
+                            "defaultInstanceId": {
+                              "type": "integer",
+                              "example": 40
+                            },
+                            "instances": {
+                              "type": "array",
+                              "items": {
+                                "$ref": "#/components/schemas/instance"
+                              }
+                            }
+                          },
+                          "required": ["regions"]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/deployment/cloud-provider/{cloudProviderId}/region/{regionId}": {
+      "get": {
+        "operationId": "getCloudProviderRegion",
+        "summary": "Get all instances for the selected region",
+        "description": "Show the instances for the specified cloud provider and region.",
+        "tags": ["Deployment"],
+        "parameters": [
+          {
+            "in": "path",
+            "description": "Cloud Provider ID (full list [get] /deployment/provider)",
+            "name": "cloudProviderId",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "example": 1
+            }
+          },
+          {
+            "in": "path",
+            "description": "Cloud Region ID (full list [get] /deployment/provider/{}/region)",
+            "name": "regionId",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "example": 30
+            }
+          },
+          {
+            "in": "query",
+            "description": "Should include default values",
+            "name": "defaults",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "040101"
+                    },
+                    "data": {
+                      "properties": {
+                        "defaultInstanceId": {
+                          "type": "integer",
+                          "example": 1
+                        },
+                        "instances": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/instance"
+                          }
+                        }
+                      },
+                      "required": ["instances"]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "Authorization": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Authorization header, required in all authenticated requests.\n\nHeader format: **Authorization: Bearer <token>**\n"
+      }
+    },
+    "schemas": {
+      "ClusterInfo": {
+        "description": "Information about the cluster",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "ID of the cluster"
+          },
+          "accountId": {
+            "type": "integer",
+            "description": "ID of the account where cluster belongs to"
+          },
+          "clusterName": {
+            "type": "string",
+            "description": "Name of the cluster"
+          },
+          "status": {
+            "type": "string",
+            "description": "Status of the cluster",
+            "enum": [
+              "ACTIVE",
+              "QUEUED",
+              "BOOTSTRAPPING",
+              "BOOTSTRAP_ERROR",
+              "INACTIVE",
+              "PENDING_DELETE",
+              "DELETED"
+            ]
+          },
+          "cloudProviderId": {
+            "type": "integer",
+            "description": "ID of the cloud provider (full list [get] /deployment/provider)"
+          },
+          "instanceId": {
+            "type": "integer",
+            "description": "ID of the instance type (full list [get] /deployment/provider/{}/region/{}/instance)"
+          },
+          "scyllaVersionId": {
+            "type": "integer",
+            "description": "Version of Scylla",
+            "example": "2022.1.3"
+          },
+          "userApiInterface": {
+            "type": "string",
+            "description": "CQL or ALTERNATOR (DynamoDB)",
+            "enum": ["CQL", "ALTERNATOR"]
+          },
+          "pricingModel": {
+            "type": "integer",
+            "description": "Defines the pricing model"
+          },
+          "maxAllowedCIDRRange": {
+            "type": "integer",
+            "description": "Max CIDR range the user is allowed to specify on allowed ips rules, 0 disable all limitations."
+          },
+          "dns": {
+            "type": "boolean",
+            "description": "DNS enabled flag"
+          },
+          "cloudProvider": {
+            "$ref": "#/components/schemas/cloudProvider"
+          },
+          "scyllaVersion": {
+            "$ref": "#/components/schemas/scyllaVersion"
+          },
+          "region": {
+            "$ref": "#/components/schemas/region"
+          },
+          "instance": {
+            "$ref": "#/components/schemas/instance"
+          },
+          "dc": {
+            "$ref": "#/components/schemas/ClusterDCInfo"
+          },
+          "freeTier": {
+            "$ref": "#/components/schemas/FreeTierInfo"
+          },
+          "jumpStart": {
+            "$ref": "#/components/schemas/JumpStartClusterInfo"
+          },
+          "progress": {
+            "$ref": "#/components/schemas/ClusterRequestProgress"
+          },
+          "provisioning": {
+            "$ref": "#/components/schemas/ProvisionType"
+          },
+          "serverless": {
+            "type": "boolean"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "accountId",
+          "clusterName",
+          "status",
+          "cloudProviderId",
+          "scyllaVersionId"
+        ]
+      },
+      "ClusterWithMetrics": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ClusterInfo"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "accountId": {
+                "type": "integer",
+                "description": "ID of the account where cluster belongs to"
+              },
+              "id": {
+                "type": "integer",
+                "description": "ID of the cluster"
+              },
+              "clusterName": {
+                "type": "string",
+                "description": "Name of the cluster"
+              },
+              "status": {
+                "type": "string",
+                "description": "Status of the cluster",
+                "enum": [
+                  "ACTIVE",
+                  "QUEUED",
+                  "BOOTSTRAPPING",
+                  "BOOTSTRAP_ERROR",
+                  "INACTIVE",
+                  "PENDING_DELETE",
+                  "DELETED"
+                ]
+              },
+              "cloudProviderId": {
+                "type": "integer",
+                "description": "ID of the cloud provider (full list [get] /deployment/provider)"
+              },
+              "instanceId": {
+                "description": "ID of the instance type (full list [get] /deployment/provider/{}/region/{}/instance)",
+                "type": "integer"
+              },
+              "scyllaVersionId": {
+                "type": "integer",
+                "description": "Version of Scylla",
+                "example": "2022.1.3"
+              },
+              "metrics": {
+                "additionalProperties": {
+                  "type": "number",
+                  "description": "Map of cluster metrics [metric_name | value]"
+                },
+                "type": "object"
+              }
+            }
+          }
+        ]
+      },
+      "ClusterDetailedInfo": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ClusterInfo"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "replicationFactor": {
+                "type": "integer",
+                "description": "Replication Factor (RF)"
+              },
+              "broadcastType": {
+                "type": "string",
+                "description": "Broadcast type",
+                "enum": ["PRIVATE", "PUBLIC"]
+              },
+              "grafanaUrl": {
+                "type": "string",
+                "description": "URL of grafana (part of Monitoring Stack)"
+              },
+              "clientIp": {
+                "type": "string"
+              },
+              "createdAt": {
+                "type": "string",
+                "description": "Creation date",
+                "format": "date-time"
+              },
+              "promProxyEnabled": {
+                "type": "boolean",
+                "description": "Prometheus proxy enabled flag"
+              },
+              "allowedIps": {
+                "type": "array",
+                "description": "List of CIDR formatted rules a.b.c.d/e",
+                "items": {
+                  "$ref": "#/components/schemas/FirewallRule"
+                }
+              },
+              "dataCenters": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ClusterDCInfoEnriched"
+                }
+              },
+              "nodes": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/NodeInfo"
+                }
+              },
+              "vpcList": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ClusterNetwork"
+                }
+              },
+              "vpcPeeringList": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ClusterVPCPeeringInfo"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "FreeTierInfo": {
+        "type": "object",
+        "properties": {
+          "expirationDate": {
+            "type": "string",
+            "description": "Exact date showing when the free-tier cluster will be removed",
+            "format": "date-time"
+          },
+          "expirationSeconds": {
+            "type": "integer",
+            "description": "Remaining time for free-tier cluster"
+          },
+          "creationTime": {
+            "type": "string",
+            "description": "Creation time",
+            "format": "date-time"
+          }
+        }
+      },
+      "JumpStartClusterInfo": {
+        "description": "Not applicable. JumpStart is the internal ScyllaDB feature",
+        "type": "object",
+        "properties": {
+          "expirationDate": {
+            "type": "string",
+            "description": "Exact date showing when the free-tier cluster will be removed",
+            "format": "date-time"
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "expirationSeconds": {
+            "type": "integer",
+            "description": "Remaining time for free-tier cluster"
+          }
+        }
+      },
+      "ClusterDCInfo": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "ID of the datacenter"
+          },
+          "clusterId": {
+            "type": "integer",
+            "description": "ID of the cluster where the datacenter belongs to"
+          },
+          "cloudProviderId": {
+            "type": "integer",
+            "description": "ID of the cloud provider (full list [get] /deployment/provider)"
+          },
+          "regionId": {
+            "type": "integer",
+            "description": "ID of the cloud provider region (full list [get] /deployment/provider/{}/region)"
+          },
+          "replicationFactor": {
+            "type": "integer",
+            "description": "Replication Factor (RF)"
+          },
+          "cidrBlock": {
+            "$ref": "#/components/schemas/CIDR"
+          },
+          "accountCloudProviderCredentialsId": {
+            "type": "integer",
+            "description": "ID of the account credentials"
+          },
+          "status": {
+            "type": "string",
+            "description": "Status of the data center",
+            "enum": [
+              "ACTIVE",
+              "INIT",
+              "INACTIVE",
+              "DELETED",
+              "BOOTSTRAP_COMPLETE",
+              "BOOTSTRAP_ERROR",
+              "JOINING",
+              "JOINING_ERROR"
+            ]
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the data center"
+          },
+          "instanceId": {
+            "type": "integer",
+            "description": "ID of the instance type (full list [get] /deployment/provider/{}/region/{}/instance)"
+          }
+        }
+      },
+      "ClusterDCInfoEnriched": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ClusterDCInfo"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "cloudProvider": {
+                "$ref": "#/components/schemas/cloudProvider"
+              },
+              "region": {
+                "$ref": "#/components/schemas/region"
+              }
+            }
+          }
+        ]
+      },
+      "NodeInfo": {
+        "properties": {
+          "billingStartDate": {
+            "type": "string",
+            "description": "Starting date for the billing"
+          },
+          "cloudProviderId": {
+            "type": "integer",
+            "description": "ID of the cloud provider (full list [get] /deployment/provider)"
+          },
+          "instanceId": {
+            "type": "integer",
+            "description": "ID of the instance type (full list [get] /deployment/provider/{}/region/{}/instance)"
+          },
+          "regionId": {
+            "type": "integer",
+            "description": "ID of the cloud provider region (full list [get] /deployment/provider/{}/region)"
+          },
+          "dcId": {
+            "type": "integer",
+            "description": "ID of the datacenter"
+          },
+          "clusterJoinDate": {
+            "type": "string",
+            "description": "Date when server joined the cluster"
+          },
+          "dns": {
+            "type": "string",
+            "description": "Server's DNS name"
+          },
+          "id": {
+            "type": "integer",
+            "description": "ID of the node"
+          },
+          "state": {
+            "type": "string",
+            "description": "Status of the node",
+            "enum": [
+              "NORMAL",
+              "JOINING",
+              "LEAVING",
+              "DECOMMISSIONED",
+              "MOVING",
+              "REMOVED"
+            ]
+          },
+          "privateIP": {
+            "type": "string",
+            "description": "Private IP of the node"
+          },
+          "publicIP": {
+            "type": "string",
+            "description": "Public IP of the node"
+          },
+          "cloudProvider": {
+            "$ref": "#/components/schemas/cloudProvider"
+          },
+          "region": {
+            "$ref": "#/components/schemas/region"
+          },
+          "serviceId": {
+            "description": "Deprecated",
+            "type": "integer"
+          },
+          "serviceVersionId": {
+            "description": "Deprecated",
+            "type": "integer"
+          },
+          "status": {
+            "type": "string",
+            "description": "Status of the node",
+            "enum": [
+              "ACTIVE",
+              "INACTIVE",
+              "PENDING_DELETE",
+              "DELETED",
+              "QUEUED"
+            ]
+          }
+        },
+        "type": "object"
+      },
+      "ClusterNetwork": {
+        "properties": {
+          "clusterId": {
+            "type": "integer",
+            "description": "ID of the cluster where the datacenter belongs to"
+          },
+          "id": {
+            "type": "integer",
+            "description": "ID of the VPC (internal for scylla-cloud)"
+          },
+          "cloudProviderId": {
+            "type": "integer",
+            "description": "ID of the cloud provider (full list [get] /deployment/provider)"
+          },
+          "regionId": {
+            "type": "integer",
+            "description": "ID of the cloud provider region (full list [get] /deployment/provider/{}/region)"
+          },
+          "cidrBlock": {
+            "$ref": "#/components/schemas/CIDR"
+          }
+        },
+        "type": "object"
+      },
+      "ClusterRequestProgress": {
+        "type": "object",
+        "properties": {
+          "progressPercent": {
+            "type": "integer",
+            "description": "Request processing progress"
+          },
+          "progressDescription": {
+            "type": "string",
+            "description": "Request progress description"
+          }
+        }
+      },
+      "ProvisionType": {
+        "type": "string",
+        "enum": ["dedicated-vm", "serverless"],
+        "default": "dedicated-vm",
+        "description": "type of the cluster provisioning, indicates if it\\'s dedicated VM or a serverless cluster"
+      },
+      "CIDR": {
+        "type": "string",
+        "description": "CIDR block in the form of ip/mask",
+        "example": "192.0.2.0/24"
+      },
+      "FirewallRules": {
+        "description": "List of CIDR formatted rules a.b.c.d/e",
+        "properties": {
+          "clusterId": {
+            "type": "integer",
+            "description": "ID of the cluster where the datacenter belongs to"
+          },
+          "id": {
+            "type": "integer",
+            "description": "ID of the firewall allowed rule"
+          },
+          "address": {
+            "$ref": "#/components/schemas/CIDR"
+          }
+        },
+        "type": "object"
+      },
+      "ClusterVPCPeeringInfo": {
+        "type": "object",
+        "properties": {
+          "externalId": {
+            "type": "string",
+            "description": "External ID of the VPC peering",
+            "example": "pcx-21f1c5d76e55f2b0c"
+          },
+          "id": {
+            "type": "integer",
+            "description": "ID of the VPC peering (scyllaDB internal)"
+          },
+          "networkName": {
+            "type": "string",
+            "description": "Name of the network (GCP specific)"
+          },
+          "ownerId": {
+            "type": "string",
+            "description": "Owner of the peering (AWS account ID or GCP project ID)"
+          },
+          "vpcId": {
+            "type": "string",
+            "description": "Peer VPC external ID",
+            "example": "vpc-11f1c5d76e55f2b0c"
+          },
+          "cidrList": {
+            "description": "List of CIDRs",
+            "items": {
+              "$ref": "#/components/schemas/CIDR"
+            },
+            "type": "array"
+          },
+          "cidrBlockVerified": {
+            "description": "List of CIDRs",
+            "items": {
+              "$ref": "#/components/schemas/CIDR"
+            },
+            "type": "array"
+          },
+          "regionId": {
+            "type": "integer",
+            "description": "ID of the cloud provider region (full list [get] /deployment/provider/{}/region)"
+          },
+          "projectId": {
+            "type": "string",
+            "description": "GCP Project ID (GCP specific)"
+          },
+          "status": {
+            "type": "string",
+            "description": "Status of the VPC peering",
+            "enum": [
+              "INITIATING_REQUEST",
+              "PENDING_ACCEPTANCE",
+              "DELETING",
+              "DELETED",
+              "FAILED",
+              "REJECTED",
+              "EXPIRED",
+              "PROVISIONING",
+              "ACTIVE",
+              "MISMATCHED",
+              "INACTIVE"
+            ]
+          },
+          "expiresAt": {
+            "type": "string",
+            "description": "Expiration time"
+          }
+        }
+      },
+      "ClusterCreateRequestV1": {
+        "type": "object",
+        "properties": {
+          "accountCredentialId": {
+            "type": "integer",
+            "description": "ID of the account credentials"
+          },
+          "alternatorWriteIsolation": {
+            "type": "string",
+            "description": "Write isolation for ALTERNATOR",
+            "enum": ["forbid", "only_rmw_uses_lwt", "always"]
+          },
+          "broadcastType": {
+            "type": "string",
+            "description": "Broadcast type",
+            "enum": ["PRIVATE", "PUBLIC"]
+          },
+          "cidrBlock": {
+            "$ref": "#/components/schemas/CIDR"
+          },
+          "cloudProviderId": {
+            "type": "integer",
+            "description": "ID of the cloud provider (full list [get] /deployment/provider)"
+          },
+          "instanceId": {
+            "type": "integer",
+            "description": "ID of the instance type (full list [get] /deployment/provider/{}/region/{}/instance)"
+          },
+          "regionId": {
+            "type": "integer",
+            "description": "ID of the cloud provider region (full list [get] /deployment/provider/{}/region)"
+          },
+          "enableDNSAssociation": {
+            "description": "Enables DNS on the cluster and creation of the DNS records for the seed nodes at cluster creation time",
+            "type": "boolean"
+          },
+          "allowedIPs": {
+            "type": "array",
+            "description": "List of CIDR formatted rules a.b.c.d/e",
+            "items": {
+              "$ref": "#/components/schemas/FirewallRule"
+            }
+          },
+          "freeTier": {
+            "type": "boolean",
+            "description": "Defines if the free-tier cluster should be created"
+          },
+          "jumpStart": {
+            "type": "boolean",
+            "description": "Not applicable"
+          },
+          "clusterName": {
+            "type": "string",
+            "description": "Name of the cluster"
+          },
+          "numberOfNodes": {
+            "type": "integer",
+            "description": "Number of nodes"
+          },
+          "promProxy": {
+            "type": "boolean",
+            "description": "Defines if prometheus proxy will be available"
+          },
+          "replicationFactor": {
+            "type": "integer",
+            "description": "Replication Factor (RF)"
+          },
+          "scyllaVersionId": {
+            "description": "Version of Scylla",
+            "example": "2022.1.3",
+            "type": "integer"
+          },
+          "userAPIInterface": {
+            "type": "string",
+            "description": "CQL or ALTERNATOR (DynamoDB)",
+            "enum": ["CQL", "ALTERNATOR"]
+          }
+        }
+      },
+      "ClusterCreateResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ClusterCreateRequestV1"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "cloudProvider": {
+                "$ref": "#/components/schemas/cloudProvider"
+              },
+              "scyllaVersion": {
+                "$ref": "#/components/schemas/scyllaVersion"
+              },
+              "region": {
+                "$ref": "#/components/schemas/region"
+              },
+              "instance": {
+                "$ref": "#/components/schemas/instance"
+              }
+            }
+          }
+        ]
+      },
+      "ClusterRequest": {
+        "properties": {
+          "accountId": {
+            "type": "integer",
+            "description": "ID of the account where cluster belongs to"
+          },
+          "clusterId": {
+            "type": "integer",
+            "description": "ID of the cluster where the datacenter belongs to"
+          },
+          "id": {
+            "type": "integer",
+            "description": "ID of the cluster"
+          },
+          "progressDescription": {
+            "type": "string",
+            "description": "Request progress description"
+          },
+          "progressPercent": {
+            "type": "integer",
+            "description": "Request processing progress"
+          },
+          "requestBody": {
+            "type": "string",
+            "description": "JSON body of the request"
+          },
+          "requestType": {
+            "type": "string",
+            "description": "Defines type of the request",
+            "enum": [
+              "ADD_DC",
+              "CREATE_CLUSTER",
+              "DELETE_CLUSTER",
+              "RESIZE_CLUSTER",
+              "UPGRADE_CLUSTER",
+              "SCALE_CLUSTER",
+              "INSTALL_MANAGER",
+              "DNS",
+              "DELETE_VPC_PEERING"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "description": "Status of the request",
+            "enum": ["QUEUED", "IN_PROGRESS", "FAILED", "COMPLETED"]
+          },
+          "userFriendlyError": {
+            "type": "string",
+            "description": "Descriptive information about the potential error"
+          },
+          "userId": {
+            "type": "integer",
+            "description": "ID of the user who created the request"
+          },
+          "version": {
+            "type": "integer",
+            "description": "Version of the request. Always = 1"
+          }
+        },
+        "type": "object"
+      },
+      "CloudAccount": {
+        "properties": {
+          "checkStatus": {
+            "description": "Holds the status of an AccountCloudCredential validation",
+            "$ref": "#/components/schemas/CloudAccountCheckStatus"
+          },
+          "cloudProviderId": {
+            "description": "ID of the cloud provider (full list [get] /deployment/provider)",
+            "type": "integer"
+          },
+          "id": {
+            "description": "Internal ID of the cloud account",
+            "type": "integer"
+          },
+          "owner": {
+            "description": "Owner of the account [Scylla, Account]. Owner = Account means it's BYOA deployment.",
+            "enum": ["Scylla", "Account"],
+            "type": "string"
+          },
+          "properties": {
+            "$ref": "#/components/schemas/AWSCloudAccountProperties",
+            "description": "AWS cloud account properties"
+          },
+          "state": {
+            "type": "string",
+            "description": "Status of the cloud account",
+            "enum": ["NEW", "ACTIVE", "DELETED"]
+          }
+        },
+        "type": "object"
+      },
+      "CloudAccountCheckStatus": {
+        "properties": {
+          "boundaryPolicy": {
+            "description": "BoundaryPolicy is the status of the boundary policy in relation to the golden",
+            "type": "string"
+          },
+          "cloudPolicy": {
+            "description": "CloudPolicy is the status of the cloud policy in relation to the golden",
+            "type": "string"
+          },
+          "error": {
+            "description": "Error contains the last fatal error, if any",
+            "type": "string"
+          },
+          "transientError": {
+            "description": "TransientError contains the last transient error, if any",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "AWSCloudAccountProperties": {
+        "properties": {
+          "awsAccountId": {
+            "type": "string",
+            "description": "AWS Account ID"
+          },
+          "boundaryPolicyARN": {
+            "type": "string",
+            "description": "ARN of the boundary policy"
+          },
+          "cloudPolicyARN": {
+            "type": "string",
+            "description": "ARN of the policy"
+          },
+          "cloudRoleARN": {
+            "type": "string",
+            "description": "ARN of the role"
+          },
+          "cloudRoleExternalId": {
+            "type": "string",
+            "description": "UUID generated by scylla-cloud (for internal reason)"
+          }
+        },
+        "type": "object"
+      },
+      "scyllaVersion": {
+        "type": "object",
+        "description": "Represent version of the ScyllaDB installed on nodes",
+        "properties": {
+          "versionId": {
+            "type": "integer",
+            "description": "ID of the service version",
+            "example": 103
+          },
+          "version": {
+            "type": "string",
+            "description": "Name of the service version",
+            "example": "2021.1.16"
+          },
+          "description": {
+            "type": "string",
+            "description": "Version description",
+            "example": "Scylla Enterprise 2021.1.16"
+          },
+          "userApiInterface": {
+            "type": "string",
+            "description": "CQL or ALTERNATOR (DynamoDB)",
+            "enum": ["CQL", "ALTERNATOR"]
+          },
+          "newCluster": {
+            "type": "string",
+            "description": "Describes if this version should be available for creating new clusters using the frontend wizard",
+            "example": "DISABLED",
+            "enum": ["ENABLED", "DISABLED"]
+          }
+        }
+      },
+      "cloudProvider": {
+        "type": "object",
+        "description": "Cloud provider description",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "ID of the cloud provider (internal for scylla-cloud)",
+            "example": 1
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the cloud provider",
+            "example": "AWS"
+          },
+          "rootAccountId": {
+            "type": "string",
+            "description": "Cloud provider account ID",
+            "example": "123456789012"
+          }
+        }
+      },
+      "region": {
+        "type": "object",
+        "description": "Region and continent description",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "ID of the region (internal for scylla-cloud)",
+            "example": 30
+          },
+          "externalId": {
+            "type": "string",
+            "description": "External ID of the cloud provider region",
+            "example": "us-east1"
+          },
+          "cloudProviderId": {
+            "type": "integer",
+            "description": "ID of the cloud provider (full list [get] /deployment/provider)",
+            "example": 2
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the region",
+            "example": "us-east1"
+          },
+          "dcName": {
+            "type": "string",
+            "description": "Name of the data center",
+            "example": "GCE_US_EAST_1"
+          },
+          "fullName": {
+            "type": "string",
+            "description": "Full name of the region",
+            "example": "us-east1 (South Carolina)"
+          },
+          "continent": {
+            "type": "string",
+            "description": "Continent name"
+          },
+          "backupStorageGBCost": {
+            "type": "number",
+            "description": "Cost of storing 1 Gigabyte in backup",
+            "example": 0.02
+          },
+          "trafficSameRegionInGBCost": {
+            "type": "number",
+            "description": "Cost of sending 1 Gigabyte to the same region",
+            "example": 0
+          },
+          "trafficSameRegionOutGBCost": {
+            "type": "number",
+            "description": "Cost of receiving 1 Gigabyte from the same region",
+            "example": 0
+          },
+          "trafficCrossRegionOutGBCost": {
+            "type": "number",
+            "description": "Cost of sending 1 Gigabyte to another region",
+            "example": 0
+          },
+          "trafficInternetOutGBCost": {
+            "type": "number",
+            "description": "Cost of sending 1 Gigabyte to the internet",
+            "example": 0
+          }
+        }
+      },
+      "instance": {
+        "type": "object",
+        "description": "Cloud provider instance pricing description",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "ID of the instance type (internal for scylla-cloud)",
+            "example": 40
+          },
+          "externalId": {
+            "type": "string",
+            "description": "External ID of the cloud provider instance type",
+            "example": "n2-highmem-2"
+          },
+          "cloudProviderId": {
+            "type": "integer",
+            "description": "ID of the cloud provider (full list [get] /deployment/provider)",
+            "example": 2
+          },
+          "groupDefault": {
+            "type": "boolean",
+            "description": "GroupDefault says which one is the default in a group of matching external_id"
+          },
+          "displayOrder": {
+            "type": "integer",
+            "description": "Position when showing multiple instance types",
+            "example": 3
+          },
+          "memory": {
+            "type": "integer",
+            "description": "Instance type RAM size in Megabytes",
+            "example": 16384
+          },
+          "localDiskCount": {
+            "type": "integer",
+            "description": "Instance type disk count",
+            "example": 1
+          },
+          "totalStorage": {
+            "type": "integer",
+            "description": "Instance type total memory size (uses base of 10 GB)",
+            "example": 375
+          },
+          "cpuCount": {
+            "type": "integer",
+            "description": "Instance type CPU core count",
+            "example": 2
+          },
+          "networkSpeed": {
+            "type": "integer",
+            "description": "Instance type network bandwidth in Megabytes per second",
+            "example": 10
+          },
+          "externalStorageNetworkSpeed": {
+            "type": "integer",
+            "description": "Cloud provider storage bandwidth in Megabytes per second",
+            "example": 0
+          },
+          "costPerHour": {
+            "type": "number",
+            "description": "Deprecated in favor of InstanceCostHourly"
+          },
+          "environment": {
+            "type": "string",
+            "description": "Development clusters lack advanced features (e.g. Scylla Manager, monitoring alerts and many others) which are present in Production clusters",
+            "enum": ["PRODUCTION", "DEVELOPMENT"]
+          },
+          "licenseCostOnDemandPerHour": {
+            "type": "number",
+            "description": "Deprecated"
+          },
+          "subscriptionCostHourly": {
+            "type": "number",
+            "description": "Scylla related part of the cost"
+          },
+          "instanceCostHourly": {
+            "type": "number",
+            "description": "Cloud provider related part of the cost",
+            "example": 0.03
+          },
+          "freeTierHours": {
+            "type": "integer",
+            "description": "The amount of hours for which instance type is eligible for free tier",
+            "example": 0
+          }
+        }
+      },
+      "FirewallRule": {
+        "properties": {
+          "clusterId": {
+            "type": "integer",
+            "description": "ID of the cluster"
+          },
+          "id": {
+            "type": "integer",
+            "description": "ID of the firewall allowed rule"
+          },
+          "address": {
+            "type": "string",
+            "description": "CIDR notation",
+            "example": "192.0.2.0/24"
+          }
+        },
+        "type": "object"
+      },
+      "CidrBlock": {
+        "type": "string",
+        "description": "CIDR notation",
+        "example": "172.31.1.1/16"
+      },
+      "errorObject": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "example": "040101"
+          }
+        }
+      }
+    },
+    "parameters": {
+      "token": {
+        "in": "header",
+        "name": "DBaaS-Token",
+        "schema": {
+          "type": "string",
+          "format": "uuid"
+        }
+      },
+      "trace": {
+        "in": "header",
+        "name": "Trace-Id",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "accountId": {
+        "in": "path",
+        "description": "Account ID",
+        "name": "accountId",
+        "required": true,
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "cloudProviderId": {
+        "in": "path",
+        "description": "Cloud Provider ID (full list [get] /deployment/provider)",
+        "name": "cloudProviderId",
+        "required": true,
+        "schema": {
+          "type": "integer",
+          "example": 1
+        }
+      },
+      "regionId": {
+        "in": "path",
+        "description": "Cloud Region ID (full list [get] /deployment/provider/{}/region)",
+        "name": "regionId",
+        "required": true,
+        "schema": {
+          "type": "integer",
+          "example": 30
+        }
+      },
+      "clusterId": {
+        "in": "path",
+        "description": "Cluster ID",
+        "name": "clusterId",
+        "required": true,
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "peerId": {
+        "in": "path",
+        "description": "Peer ID",
+        "name": "peerId",
+        "required": true,
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "defaults": {
+        "in": "query",
+        "description": "Should include default values",
+        "name": "defaults",
+        "required": false,
+        "schema": {
+          "type": "boolean",
+          "default": false
+        }
+      },
+      "requestType": {
+        "description": "type of request",
+        "in": "query",
+        "name": "type",
+        "schema": {
+          "type": "string",
+          "enum": [
+            "ADD_DC",
+            "CREATE_CLUSTER",
+            "DELETE_CLUSTER",
+            "RESIZE_CLUSTER",
+            "UPGRADE_CLUSTER",
+            "SCALE_CLUSTER",
+            "INSTALL_MANAGER",
+            "DNS",
+            "DELETE_VPC_PEERING"
+          ]
+        }
+      },
+      "requestStatus": {
+        "description": "status of request",
+        "in": "query",
+        "name": "status",
+        "schema": {
+          "type": "string",
+          "enum": ["QUEUED", "IN_PROGRESS", "FAILED", "COMPLETED"]
+        }
+      }
+    }
+  },
+  "tags": []
+}
