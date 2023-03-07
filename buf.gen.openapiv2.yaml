@@ -1,5 +1,0 @@
-version: v1
-plugins:
-  - name: openapiv2
-    out: ./gen
-    opt: allow_merge=true,merge_file_name=v2

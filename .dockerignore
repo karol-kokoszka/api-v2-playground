@@ -1,8 +1,0 @@
-# Skaffold watches all unignored files and redeploys on changes
-# Ignore everything
-*
-
-# Except the binary and k8s config
-!/scylla-cloud-linux
-!/scylla-cloud
-!/k8s
