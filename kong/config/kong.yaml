@@ -1,0 +1,10 @@
+_format_version: "3.0"
+_transform: true
+
+services:
+- name: apiv2
+  url: http://siren:8080/
+  routes:
+  - name: clusters
+    paths:
+    - /v2
