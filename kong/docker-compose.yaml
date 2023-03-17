@@ -91,6 +91,12 @@ services:
       - ./config:/opt/kong
     security_opt:
       - no-new-privileges
+  siren:
+    build:
+      context: ../
+      dockerfile: Dockerfile
+    networks:
+    - kong-net
   db:
     image: postgres:9.5
     profiles: ["database"]
@@ -112,6 +118,7 @@ services:
       - kong-net
     volumes:
       - kong_data:/var/lib/postgresql/data
+
 
 secrets:
   kong_postgres_password:

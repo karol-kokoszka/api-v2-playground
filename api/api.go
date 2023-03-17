@@ -2,11 +2,16 @@ package api
 
 import (
 	"encoding/json"
-	"github.com/scylladb/scylla-cloud/api/gen/siren"
 	"net/http"
+
+	"github.com/scylladb/scylla-cloud/api/gen/siren"
 )
 
 type API struct {
+}
+
+func RegisterRoutes(r *http.ServeMux) {
+	r.Handle("/", siren.Handler(&API{}))
 }
 
 func (a *API) GetCloudAccount(w http.ResponseWriter, r *http.Request, accountId int, params siren.GetCloudAccountParams) {
@@ -116,8 +121,8 @@ func (a *API) GetCloudProviderRegions(w http.ResponseWriter, r *http.Request, cl
 }
 
 func (a *API) GetCloudProviders(w http.ResponseWriter, r *http.Request) {
-	//TODO implement me
-	panic("implement me")
+	w.WriteHeader(http.StatusOK)
+	w.Write([]byte("[]"))
 }
 
 func (a *API) GetScyllaVersions(w http.ResponseWriter, r *http.Request, params siren.GetScyllaVersionsParams) {
